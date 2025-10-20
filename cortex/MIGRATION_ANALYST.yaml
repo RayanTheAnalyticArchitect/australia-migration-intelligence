@@ -1,0 +1,75 @@
+name: MIGRATION_ANALYST
+description: |
+  This model analyzes internal migration across Australian states and suburbs using AusPost Movers and ABS geography data. It supports questions about net migration, top moving suburbs, and interstate flows.
+tables:
+  - name: STATE_MONTHLY_FLOWS
+    base_table:
+      database: RIPPAA_MIGRATION
+      schema: GOLD
+      table: STATE_MONTHLY_FLOWS
+    dimensions:
+      - name: FROM_STATE
+        expr: FROM_STATE
+        data_type: VARCHAR(20)
+      - name: STAT_MONTH
+        expr: STAT_MONTH
+        data_type: VARCHAR(7)
+      - name: TO_STATE
+        expr: TO_STATE
+        data_type: VARCHAR(20)
+    facts:
+      - name: ADDRESSES
+        expr: ADDRESSES
+        data_type: NUMBER(38,0)
+      - name: CROSS_STATE_ADDRESSES
+        expr: CROSS_STATE_ADDRESSES
+        data_type: NUMBER(38,0)
+      - name: MOVES
+        expr: MOVES
+        data_type: NUMBER(18,0)
+  - name: STATE_OD_MATRIX
+    base_table:
+      database: RIPPAA_MIGRATION
+      schema: GOLD
+      table: STATE_OD_MATRIX
+    dimensions:
+      - name: FROM_STATE
+        expr: FROM_STATE
+        data_type: VARCHAR(20)
+      - name: STAT_MONTH
+        expr: STAT_MONTH
+        data_type: VARCHAR(7)
+      - name: TO_STATE
+        expr: TO_STATE
+        data_type: VARCHAR(20)
+  - name: TOP_SUBURB_OD
+    base_table:
+      database: RIPPAA_MIGRATION
+      schema: GOLD
+      table: TOP_SUBURB_OD
+    dimensions:
+      - name: FROM_POSTCODE
+        expr: FROM_POSTCODE
+        data_type: VARCHAR(4)
+      - name: FROM_REGION
+        expr: FROM_REGION
+        data_type: VARCHAR(128)
+      - name: FROM_STATE
+        expr: FROM_STATE
+        data_type: VARCHAR(20)
+      - name: STAT_MONTH
+        expr: STAT_MONTH
+        data_type: VARCHAR(7)
+      - name: TO_POSTCODE
+        expr: TO_POSTCODE
+        data_type: VARCHAR(4)
+      - name: TO_REGION
+        expr: TO_REGION
+        data_type: VARCHAR(128)
+      - name: TO_STATE
+        expr: TO_STATE
+        data_type: VARCHAR(20)
+    facts:
+      - name: ADDRESSES
+        expr: ADDRESSES
+        data_type: NUMBER(38,0)
