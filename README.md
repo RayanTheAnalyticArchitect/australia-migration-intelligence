@@ -8,7 +8,8 @@ This repo builds an **internal migration intelligence mart for Australia** using
 > If Cortex Analyst isn’t enabled in your region yet, you can still run all SQL and use the YAML once it’s available.
 
 ## Architecture
-![Uploading Australia Migration Intelligence Platform — Simple Overview (Snowflake + Cortex AI).png…]()
+<img width="1907" height="456" alt="image" src="https://github.com/user-attachments/assets/c9ed398a-ebbb-4a1d-8761-dfd3a18a3a79" />
+
 
 
 
